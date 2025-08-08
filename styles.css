@@ -304,10 +304,39 @@ nav {
 }
 
 .hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 40px;
+}
+
+.hero-text {
     flex: 1;
     min-width: 300px;
     text-align: left;
     animation: slideInLeft 1s ease-out;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideInRight 1s ease-out;
+}
+
+.hero-logo {
+    width: 800px;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    margin: 0 0 0 auto;
+    display: block;
+    transform: scale(1.2);
+    transform-origin: right center;
+    position: relative;
+    right: -100px;
 }
 
 .hero-content h1 {
@@ -326,26 +355,20 @@ nav {
     margin-right: 0;
 }
 
-.hero-image {
-    flex: 1;
-    min-width: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: slideInRight 1s ease-out;
-}
-
-.hero-image img {
-    max-width: 100%;
-    height: auto;
-    max-height: 500px;
-    object-fit: contain;
-    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
-    transition: transform 0.5s ease;
-}
-
-.hero-image img:hover {
-    transform: translateY(-10px);
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-text {
+        text-align: center;
+        align-items: center;
+    }
+    
+    .hero-logo {
+        max-height: 300px;
+    }
 }
 
 @keyframes slideInLeft {
@@ -613,15 +636,10 @@ nav {
 
 /* Contact Section */
 .contact {
-    position: relative;
-    padding: 100px 0;
     background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-    overflow: hidden;
-}
-
-.contact-container {
+    padding: 100px 0;
     position: relative;
-    z-index: 1;
+    overflow: hidden;
 }
 
 .contact-container {
@@ -758,13 +776,27 @@ nav {
 /* Payment Portal Section */
 .payment-portal {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 40px;
+    padding: 30px;
     background: white;
     border-radius: 8px;
     box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
     height: 100%;
+    text-align: center;
+    gap: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.payment-portal {
+    background: 
+        /* Logo pattern */
+        url('https://cdn.gamma.app/0q3kwkx42ofh0ga/ec3c8c46e87c4d6790e5e55a1b865ee9/original/a_logo_for_Miami_Kids_Buses.png');
+    background-size: 150px;
+    background-repeat: repeat;
+    background-position: center;
     position: relative;
     overflow: hidden;
 }
@@ -776,10 +808,31 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('https://cdn.gamma.app/0q3kwkx42ofh0ga/de2deec1316b4863af4230bb646675ec/original/do_nothing.png');
-    background-size: 150px;
-    opacity: 0.1;
-    z-index: 0;
+    background: rgba(255, 255, 255, 0.85);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.payment-note {
+    color: #333;
+    margin: 0;
+    font-size: 0.95rem;
+    position: relative;
+    z-index: 2;
+    font-weight: 500;
+}
+
+.payment-note:first-child {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.payment-note:last-child {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 5px;
 }
 
 .payment-btn-large {
@@ -801,10 +854,6 @@ nav {
     box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
     border: none;
     cursor: pointer;
-    position: relative;
-    z-index: 1;
-    background-color: rgba(40, 167, 69, 0.9);
-    backdrop-filter: blur(2px);
 }
 
 .payment-btn-large i {
@@ -933,6 +982,23 @@ nav {
     align-items: center;
     justify-content: center;
     gap: 10px;
+}
+
+.payment-btn {
+    background: #28a745 !important;
+    padding: 15px 25px !important;
+    font-size: 1.1rem !important;
+    border-radius: 6px !important;
+    text-align: center;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease !important;
+    position: relative;
+    z-index: 2;
+    border: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .btn-submit:hover {
