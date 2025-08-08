@@ -128,7 +128,7 @@ if (contactForm && submitBtn) {
         toast.className = 'toast';
         toast.innerHTML = `
             <i class="fas fa-check-circle"></i>
-            <span>Thanks! YellowRoute will get back to you shortly!</span>
+            <span>Thanks! Miami Kids Buses will get back to you shortly!</span>
         `;
         
         document.body.appendChild(toast);
@@ -171,59 +171,12 @@ sections.forEach(section => {
     observer.observe(section);
 });
 
-// Mobile menu toggle
-const hamburger = document.createElement('div');
-hamburger.className = 'hamburger';
-hamburger.innerHTML = '&#9776;';
-const nav = document.querySelector('nav');
-nav.appendChild(hamburger);
+// Mobile menu functionality removed as per user request
 
-hamburger.addEventListener('click', () => {
-    const navLinks = document.querySelector('.nav-links');
-    navLinks.classList.toggle('active');
-    hamburger.classList.toggle('active');
-});
-
-// Add styles for mobile menu
+// Add styles for animations
 document.addEventListener('DOMContentLoaded', () => {
     const style = document.createElement('style');
     style.textContent = `
-        @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-                font-size: 1.8rem;
-                cursor: pointer;
-                color: var(--dark);
-            }
-            
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background-color: var(--light);
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                padding: 40px 0;
-                transition: all 0.5s ease;
-                z-index: 1000;
-            }
-            
-            .nav-links.active {
-                left: 0;
-            }
-            
-            .nav-links li {
-                margin: 15px 0;
-            }
-            
-            .nav-links a {
-                font-size: 1.2rem;
-            }
-        }
-        
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }

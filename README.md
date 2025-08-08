@@ -1,6 +1,6 @@
-# YellowRoute - School Bus Transportation
+# Miami Kids Buses - School Bus Transportation
 
-A modern, responsive one-page website for YellowRoute, a friendly school bus transportation company that provides safe and reliable rides for students.
+A modern, responsive one-page website for Miami Kids Buses, a friendly school bus transportation company that provides safe and reliable rides for students across South Florida.
 
 ## Features
 
@@ -44,4 +44,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-© 2025 YellowRoute. All rights reserved.
+© 2025 Miami Kids Buses. All rights reserved.
