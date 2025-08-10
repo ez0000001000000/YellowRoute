@@ -2,7 +2,6 @@
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        
         const targetId = this.getAttribute('href');
         if (targetId === '#') return;
         
@@ -65,6 +64,24 @@ const animateOnScroll = () => {
 // Initial check for elements in viewport
 window.addEventListener('load', animateOnScroll);
 window.addEventListener('scroll', animateOnScroll);
+
+// FAQ Toggle Functionality
+document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', () => {
+        const item = question.parentNode;
+        const isActive = item.classList.contains('active');
+        
+        // Close all other items
+        document.querySelectorAll('.faq-item').forEach(faqItem => {
+            faqItem.classList.remove('active');
+        });
+        
+        // Toggle current item if it wasn't active
+        if (!isActive) {
+            item.classList.add('active');
+        }
+    });
+});
 
 // Form submission
 const contactForm = document.querySelector('.contact-form form');

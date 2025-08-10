@@ -237,6 +237,97 @@ nav {
     display: none;
 }
 
+/* FAQ Section */
+.faq {
+    background-color: #f9f9f9;
+    padding: 80px 0;
+}
+
+.faq h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #2c3e50;
+    font-size: 2.5rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.faq h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary);
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 20px 25px;
+    text-align: left;
+    background: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: #f5f5f5;
+}
+
+.faq-question i {
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    background: white;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 300px;
+    padding: 0 25px 20px;
+}
+
+.faq-answer p {
+    margin: 0;
+    padding: 10px 0;
+    line-height: 1.6;
+    color: #555;
+}
+
 /* Responsive adjustments */
 @media (max-width: 1024px) {
     .nav-links li {
@@ -275,13 +366,13 @@ nav {
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, #fff8e1 0%, #fff 100%);
-    padding: 200px 0 100px;
+    padding: 150px 0 100px;
     position: relative;
     overflow: hidden;
     min-height: 100vh;
     display: flex;
     align-items: flex-start;
-    padding-top: 20vh;
+    padding-top: 15vh;
 }
 
 .hero::before {
