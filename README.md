@@ -42,6 +42,12 @@ This website is built to work on all modern browsers including:
 
 This project is open source and available under the [MIT License](LICENSE).
 
+## Credits
+
+- Website designed and developed by [Snowbase Studios](https://snowbasestudio.com)
+- Icons by [Font Awesome](https://fontawesome.com)
+- Fonts by [Google Fonts](https://fonts.google.com)
+
 ---
 
 © 2025 Miami Kids Buses. All rights reserved.
