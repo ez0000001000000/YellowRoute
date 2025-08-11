@@ -44,7 +44,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## Credits
 
-- Website designed and developed by [Snowbase Studios](https://snowbasestudio.com)
+- Website designed and developed by [Snowbase Studio](https://snowbasestudio.com)
 - Icons by [Font Awesome](https://fontawesome.com)
 - Fonts by [Google Fonts](https://fonts.google.com)
 
