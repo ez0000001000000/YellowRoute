@@ -66,20 +66,50 @@ window.addEventListener('load', animateOnScroll);
 window.addEventListener('scroll', animateOnScroll);
 
 // FAQ Toggle Functionality
-document.querySelectorAll('.faq-question').forEach(question => {
-    question.addEventListener('click', () => {
-        const item = question.parentNode;
-        const isActive = item.classList.contains('active');
-        
-        // Close all other items
-        document.querySelectorAll('.faq-item').forEach(faqItem => {
-            faqItem.classList.remove('active');
+function setupFaqToggles() {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const item = question.closest('.faq-item');
+            const isActive = item.classList.contains('active');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(faqItem => {
+                faqItem.classList.remove('active');
+                const answer = faqItem.querySelector('.faq-answer');
+                if (answer) answer.style.maxHeight = '0';
+            });
+            
+            // Toggle current item
+            if (!isActive) {
+                item.classList.add('active');
+                const answer = item.querySelector('.faq-answer');
+                if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+            
+            // Toggle icon
+            const icon = question.querySelector('i');
+            if (icon) {
+                if (isActive) {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                } else {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                }
+            }
         });
-        
-        // Toggle current item if it wasn't active
-        if (!isActive) {
-            item.classList.add('active');
-        }
+    });
+}
+
+// Initialize FAQ toggles when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    setupFaqToggles();
+    
+    // Set initial max-height for active FAQ items
+    document.querySelectorAll('.faq-item.active .faq-answer').forEach(answer => {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
     });
 });
 
