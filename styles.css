@@ -103,7 +103,11 @@ ul {
 }
 
 section {
-    padding: 100px 0;
+    padding: 40px 0;
+}
+
+.about {
+    padding-top: 20px;
 }
 
 /* Text Selection Styling */
@@ -366,13 +370,13 @@ nav {
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, #fff8e1 0%, #fff 100%);
-    padding: 150px 0 100px;
+    padding: 100px 0 40px;
     position: relative;
     overflow: hidden;
-    min-height: 100vh;
+    min-height: 80vh;
     display: flex;
     align-items: flex-start;
-    padding-top: 15vh;
+    padding-top: 10vh;
 }
 
 .hero::before {
