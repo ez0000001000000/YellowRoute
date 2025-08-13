@@ -1,4 +1,4 @@
-// Enhanced smooth scrolling for navigation links
+// Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -7,31 +7,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
-            // Calculate the target position
+            // Calculate the target position with header offset
             const headerOffset = 80;
             const elementPosition = targetElement.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
             
-            // Use requestAnimationFrame for smoother animation
-            const start = window.pageYOffset;
-            const startTime = performance.now();
-            const duration = 800; // milliseconds
-            
-            const easeInOutQuad = t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-            
-            const scrollStep = (timestamp) => {
-                const elapsed = timestamp - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const easeProgress = easeInOutQuad(progress);
-                
-                window.scrollTo(0, start + (offsetPosition - start) * easeProgress);
-                
-                if (progress < 1) {
-                    window.requestAnimationFrame(scrollStep);
-                }
-            };
-            
-            window.requestAnimationFrame(scrollStep);
+            // Simple scroll with smooth behavior
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
             
             // Update URL without adding to history
             if (history.pushState) {
