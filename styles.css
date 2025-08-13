@@ -26,7 +26,6 @@ html {
     -webkit-tap-highlight-color: transparent;
     -webkit-text-size-adjust: 100%;
     -webkit-overflow-scrolling: touch;
-    scroll-snap-type: y proximity;
 }
 
 /* Custom Scrollbar */
@@ -57,11 +56,9 @@ html {
     }
 }
 
-/* Smooth section transitions */
+/* Section styling */
 section {
     scroll-margin-top: 80px;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
     position: relative;
     z-index: 1;
 }
