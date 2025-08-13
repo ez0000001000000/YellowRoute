@@ -1,4 +1,4 @@
-// Smooth scrolling for navigation links
+// Enhanced smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -7,16 +7,45 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-            });
+            // Calculate the target position
+            const headerOffset = 80;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            // Use requestAnimationFrame for smoother animation
+            const start = window.pageYOffset;
+            const startTime = performance.now();
+            const duration = 800; // milliseconds
+            
+            const easeInOutQuad = t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+            
+            const scrollStep = (timestamp) => {
+                const elapsed = timestamp - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeProgress = easeInOutQuad(progress);
+                
+                window.scrollTo(0, start + (offsetPosition - start) * easeProgress);
+                
+                if (progress < 1) {
+                    window.requestAnimationFrame(scrollStep);
+                }
+            };
+            
+            window.requestAnimationFrame(scrollStep);
+            
+            // Update URL without adding to history
+            if (history.pushState) {
+                history.pushState(null, null, targetId);
+            } else {
+                location.hash = targetId;
+            }
             
             // Close mobile menu if open
             const navLinks = document.querySelector('.nav-links');
-            if (navLinks.classList.contains('active')) {
+            if (navLinks && navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
-                document.querySelector('.hamburger').classList.remove('active');
+                const hamburger = document.querySelector('.hamburger');
+                if (hamburger) hamburger.classList.remove('active');
             }
         }
     });
@@ -41,29 +70,6 @@ window.addEventListener('scroll', () => {
     } else if (currentScroll < lastScroll && header.classList.contains('scroll-down')) {
         // Scrolling up
         header.classList.remove('scroll-down');
-        header.classList.add('scroll-up');
-    }
-    
-    lastScroll = currentScroll;
-});
-
-// Add animation on scroll
-const animateOnScroll = () => {
-    const elements = document.querySelectorAll('.feature, .card, .safety-item, .contact-info, .contact-form');
-    
-    elements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        
-        if (elementTop < windowHeight - 100) {
-            element.classList.add('animate');
-        }
-    });
-};
-
-// Initial check for elements in viewport
-window.addEventListener('load', animateOnScroll);
-window.addEventListener('scroll', animateOnScroll);
 
 // FAQ Toggle Functionality
 function setupFaqToggles() {
