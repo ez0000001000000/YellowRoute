@@ -70,6 +70,11 @@ window.addEventListener('scroll', () => {
     } else if (currentScroll < lastScroll && header.classList.contains('scroll-down')) {
         // Scrolling up
         header.classList.remove('scroll-down');
+        header.classList.add('scroll-up');
+    }
+    
+    lastScroll = currentScroll;
+});
 
 // FAQ Toggle Functionality
 function setupFaqToggles() {
@@ -82,27 +87,29 @@ function setupFaqToggles() {
             
             // Close all other FAQ items
             document.querySelectorAll('.faq-item').forEach(faqItem => {
-                faqItem.classList.remove('active');
-                const answer = faqItem.querySelector('.faq-answer');
-                if (answer) answer.style.maxHeight = '0';
+                if (faqItem !== item) { // Only close other items
+                    faqItem.classList.remove('active');
+                    const answer = faqItem.querySelector('.faq-answer');
+                    if (answer) answer.style.maxHeight = '0';
+                }
             });
             
             // Toggle current item
-            if (!isActive) {
-                item.classList.add('active');
-                const answer = item.querySelector('.faq-answer');
-                if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
+            item.classList.toggle('active');
+            const answer = item.querySelector('.faq-answer');
+            if (answer) {
+                answer.style.maxHeight = item.classList.contains('active') ? answer.scrollHeight + 'px' : '0';
             }
             
-            // Toggle icon
+                        // Toggle icon
             const icon = question.querySelector('i');
             if (icon) {
-                if (isActive) {
-                    icon.classList.remove('fa-chevron-up');
-                    icon.classList.add('fa-chevron-down');
-                } else {
+                if (item.classList.contains('active')) {
                     icon.classList.remove('fa-chevron-down');
                     icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
                 }
             }
         });

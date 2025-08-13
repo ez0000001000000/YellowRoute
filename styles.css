@@ -464,13 +464,12 @@ nav {
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, #fff8e1 0%, #fff 100%);
-    padding: 100px 0 40px;
+    padding: 80px 0 30px; /* Increased top padding from 60px to 80px */
     position: relative;
     overflow: hidden;
-    min-height: 80vh;
+    min-height: auto;
     display: flex;
     align-items: flex-start;
-    padding-top: 10vh;
 }
 
 .hero::before {
@@ -548,15 +547,27 @@ nav {
     .hero-content {
         flex-direction: column;
         text-align: center;
+        display: flex;
+        flex-direction: column;
     }
     
     .hero-text {
         text-align: center;
         align-items: center;
+        order: 2; /* Move text below image */
+        margin-top: 20px; /* Add some space between logo and text */
+    }
+    
+    .hero-image {
+        order: 1; /* Move image above text */
+        margin: 0 auto; /* Center the image container */
     }
     
     .hero-logo {
         max-height: 300px;
+        transform: none; /* Remove the right offset */
+        right: 0; /* Reset right position */
+        margin: 0 auto; /* Center the logo */
     }
 }
 
@@ -1089,8 +1100,10 @@ nav {
 .faq-preview .faq-answer {
     max-height: 0;
     overflow: hidden;
-    background: white;
-    transition: max-height 0.3s ease, padding 0.3s ease;
+    transition: max-height 0.3s ease-out;
+    background: #fff;
+    padding: 0 20px;
+    border-left: 3px solid transparent;
     font-size: 0.9rem;
     color: #666;
     line-height: 1.6;
@@ -1516,10 +1529,10 @@ footer a[href^="mailto:"] {
     
     /* Center hero content */
     .hero {
-        padding: 80px 0 40px;
+        padding: 40px 0 20px;  /* Reduced top padding from 80px to 40px and bottom from 40px to 20px */
         min-height: auto;
         display: flex;
-        align-items: center;
+        align-items: flex-start;  /* Changed from center to flex-start to move content up */
         justify-content: center;
         text-align: center;
     }
@@ -1542,8 +1555,8 @@ footer a[href^="mailto:"] {
     }
     
     .hero-image {
-        margin: 0 auto 20px;
-        max-width: 300px;
+        margin: 0 auto 10px;  /* Reduced bottom margin from 20px to 10px */
+        max-width: 250px;     /* Slightly reduced max-width */
         width: 100%;
     }
     
@@ -1642,20 +1655,4 @@ footer a[href^="mailto:"] {
 .toast i {
     margin-right: 12px;
     font-size: 1.5rem;
-}
-
-/* Animation */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.animate {
-    animation: fadeInUp 1s ease-out forwards;
 }
